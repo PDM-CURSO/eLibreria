@@ -1,17 +1,17 @@
-part of 'home_bloc.dart';
+part of 'free_books_bloc.dart';
 
-abstract class HomeState extends Equatable {
-  const HomeState();
+abstract class FreeBooksState extends Equatable {
+  const FreeBooksState();
 
   @override
   List<Object> get props => [];
 }
 
-class HomeInitial extends HomeState {}
+class HomeInitial extends FreeBooksState {}
 
-class SearchLoadingState extends HomeState {}
+class SearchLoadingState extends FreeBooksState {}
 
-class SearchErrorState extends HomeState {
+class SearchErrorState extends FreeBooksState {
   final String errorMsg;
 
   SearchErrorState({required this.errorMsg});
@@ -19,7 +19,7 @@ class SearchErrorState extends HomeState {
   List<Object> get props => [errorMsg];
 }
 
-class ContentAvailableState extends HomeState {
+class ContentAvailableState extends FreeBooksState {
   final List<Item> booksList;
   final int totalBooks;
 

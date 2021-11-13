@@ -1,13 +1,13 @@
-part of 'home_bloc.dart';
+part of 'free_books_bloc.dart';
 
-abstract class HomeEvent extends Equatable {
-  const HomeEvent();
+abstract class FreeBooksEvent extends Equatable {
+  const FreeBooksEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class SearchBookEvent extends HomeEvent {
+class SearchBookEvent extends FreeBooksEvent {
   final String queryText;
 
   SearchBookEvent({required this.queryText});

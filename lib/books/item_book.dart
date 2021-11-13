@@ -10,11 +10,14 @@ class ItemBook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var image = book.volumeInfo?.imageLinks?.thumbnail;
     return Column(
       children: [
         Card(
           child: ListTile(
-            leading: Image.network(book.volumeInfo!.imageLinks!.thumbnail!),
+            leading: image != null
+                ? Image.network(book.volumeInfo!.imageLinks!.thumbnail!)
+                : CircleAvatar(),
             title: Text(
               "${book.volumeInfo!.title ?? "No title available"}",
               overflow: TextOverflow.ellipsis,

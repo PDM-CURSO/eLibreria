@@ -3,13 +3,13 @@ import 'package:equatable/equatable.dart';
 import 'package:libreria/models/item.dart';
 import 'package:libreria/repositories/library_repository.dart';
 
-part 'home_event.dart';
-part 'home_state.dart';
+part 'free_books_event.dart';
+part 'free_books_state.dart';
 
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
+class FreeBooksBloc extends Bloc<FreeBooksEvent, FreeBooksState> {
   final LibraryRepository _libraryRepository = LibraryRepository();
 
-  HomeBloc() : super(HomeInitial()) {
+  FreeBooksBloc() : super(HomeInitial()) {
     on<SearchBookEvent>(_onSearchBook);
   }
 
