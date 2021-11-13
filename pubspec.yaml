@@ -16,6 +16,8 @@ dependencies:
   flutter_bloc: ^7.3.3
   flutter_shimmer: ^2.1.2
   webview_flutter: ^2.3.1
+  share: ^2.0.4
+  url_launcher: ^6.0.12
   # qr plugins:
   # generate, scann, read
   pretty_qr_code: ^2.0.2

@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
-import 'package:libreria/utils/utils.dart';
 
 part 'my_library_event.dart';
 part 'my_library_state.dart';
@@ -54,7 +53,7 @@ class MyLibraryBloc extends Bloc<MyLibraryEvent, MyLibraryState> {
                   "price": book["details"]["price"] as String?,
                   "qr": book["details"]["qr"] as String?,
                   "tags": book["details"]["tags"].cast<String>(),
-                  "images": book["details"]["tags"].cast<String>(),
+                  "images": book["details"]["images"].cast<String>(),
                 },
               },
             )
@@ -73,7 +72,7 @@ class MyLibraryBloc extends Bloc<MyLibraryEvent, MyLibraryState> {
                   "price": book["details"]["price"] as String?,
                   "qr": book["details"]["qr"] as String?,
                   "tags": book["details"]["tags"].cast<String>(),
-                  "images": book["details"]["tags"].cast<String>(),
+                  "images": book["details"]["images"].cast<String>(),
                 },
               },
             )
