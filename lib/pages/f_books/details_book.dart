@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:libreria/webview/web_view_page.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailsBook extends StatefulWidget {
@@ -58,17 +59,16 @@ class _DetailsBookState extends State<DetailsBook> {
                   ),
                 ),
               );
-              //_launchURL(widget.bookDetails["link"]);
             },
           ),
           IconButton(
             tooltip: "Compartir",
             icon: Icon(Icons.share),
             onPressed: () {
-              // Share.share(
-              //   "Tengo el libro de ${widget.bookDetails.volumeInfo.title} para ti en el siguiente link ${widget.bookDetails.volumeInfo.previewLink}",
-              //   subject: "Mira este libro",
-              // );
+              Share.share(
+                "Tengo el libro de: ${widget.title} \npara ti en el siguiente link:\n ${widget.bookDetails["link"]}",
+                subject: "Mira este libro",
+              );
             },
           ),
         ],
@@ -97,7 +97,7 @@ class _DetailsBookState extends State<DetailsBook> {
                     children: List.generate(
                       widget.bookDetails["images"].length ?? 0,
                       (index) => Container(
-                        margin: EdgeInsets.all(24),
+                        margin: EdgeInsets.all(8),
                         height: MediaQuery.of(context).size.height / 12,
                         width: MediaQuery.of(context).size.height / 12,
                         child: GestureDetector(
@@ -121,30 +121,65 @@ class _DetailsBookState extends State<DetailsBook> {
             Text(
               widget.title ?? "No title",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w300,
+              ),
             ),
             SizedBox(height: 24),
-            Text(
-              widget.bookDetails["price"] ?? "No date",
-              style: TextStyle(
-                color: Colors.grey[700],
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: List.generate(
-                widget.bookDetails["tags"] != null
-                    ? widget.bookDetails["tags"].length
-                    : 0,
-                (index) => Chip(
-                  backgroundColor: Colors
-                      .primaries[Random().nextInt(Colors.primaries.length)],
-                  label: Text(
-                    "${widget.bookDetails["tags"][index]}",
+              children: [
+                Expanded(
+                  child: Wrap(
+                    spacing: 16,
+                    children: List.generate(
+                      widget.bookDetails["tags"] != null
+                          ? widget.bookDetails["tags"].length
+                          : 0,
+                      (index) => Chip(
+                        backgroundColor: Colors.primaries[
+                            Random().nextInt(Colors.primaries.length)],
+                        label: Text(
+                          "${widget.bookDetails["tags"][index]}",
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.network(
+                      "${widget.bookDetails["qr"]}",
+                      height: 80,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "\$${widget.bookDetails["price"] ?? "No price available"}",
+                            style: TextStyle(
+                              color: Colors.indigo,
+                              fontWeight: FontWeight.w300,
+                              fontSize: 20,
+                            ),
+                          ),
+                          TextButton(
+                            child: Text("Comprar"),
+                            onPressed: () {
+                              _launchURL(widget.bookDetails["link"]);
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
             GestureDetector(
               child: _showLongDescription
