@@ -167,13 +167,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.3.3"
-  flutter_qr_bar_scanner:
-    dependency: "direct main"
-    description:
-      name: flutter_qr_bar_scanner
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.2"
   flutter_shimmer:
     dependency: "direct main"
     description:
@@ -240,13 +233,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
-  native_device_orientation:
-    dependency: transitive
-    description:
-      name: native_device_orientation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   nested:
     dependency: transitive
     description:
@@ -289,6 +275,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  qr_code_scanner:
+    dependency: "direct main"
+    description:
+      name: qr_code_scanner
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.1"
   share:
     dependency: "direct main"
     description:

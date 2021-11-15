@@ -21,7 +21,8 @@ dependencies:
   # qr plugins:
   # generate, scann, read
   pretty_qr_code: ^2.0.2
-  flutter_qr_bar_scanner: ^3.0.2
+  # flutter_qr_bar_scanner: ^3.0.2
+  qr_code_scanner: ^0.6.1
   # Firebase plugins:
   # auth, storage, cloud firestore
   firebase_auth: ^3.1.3
