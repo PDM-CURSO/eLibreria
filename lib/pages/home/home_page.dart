@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:libreria/pages/about/about_app.dart';
+import 'package:libreria/pages/f_books/bloc/my_library_bloc.dart';
 import 'package:libreria/pages/f_books/my_library.dart';
 import 'package:libreria/pages/g_books/free_books.dart';
 import 'package:libreria/pages/qr_serach/qr_search.dart';
@@ -36,7 +38,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // my library action
+    // my library page actions
     _pageActions[1].add(
       IconButton(
         onPressed: _openQrScannerPage,
@@ -89,7 +91,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _openQrScannerPage() async {
+  // Abrir patalla de scanner y al leer QR
+  // buscar libro en pantalla de my library┐
+  void _openQrScannerPage() {
     Navigator.of(context)
         .push(
       MaterialPageRoute(
@@ -98,8 +102,10 @@ class _HomePageState extends State<HomePage> {
     )
         .then(
       (qrValue) {
-        print(qrValue);
-        //
+        // TODO: probar esto ya que tenga QR validos
+        BlocProvider.of<MyLibraryBloc>(context).add(
+          MyLibraryRequestAllEvent(bookName: qrValue.toString()),
+        );
       },
     );
   }
