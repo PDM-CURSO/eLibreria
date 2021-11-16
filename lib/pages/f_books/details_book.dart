@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:libreria/pages/f_books/pdf_details/details_book_export.dart';
 import 'package:libreria/webview/web_view_page.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -56,6 +57,21 @@ class _DetailsBookState extends State<DetailsBook> {
                 MaterialPageRoute(
                   builder: (context) => WebViewPage(
                     url: widget.bookDetails["link"],
+                  ),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            tooltip: "Exportar como PDF",
+            icon: Icon(Icons.picture_as_pdf),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsBookExport(
+                    bookDetails: widget.bookDetails,
+                    title: widget.title,
+                    img: widget.img,
                   ),
                 ),
               );
